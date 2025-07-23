@@ -1,18 +1,19 @@
 import React from 'react';
-import { DrawingProvider } from './context/drawingcontext';
-import Canvas from './components/canvas';
-import Toolbar from './components/toolbar';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-const App: React.FC = () => {
-  return (
-    <DrawingProvider>
-      <div style={{ padding: '20px', fontFamily: 'Arial' }}>
-        <h2>🎨 Drawing Canvas</h2>
-        <Toolbar />
-        <Canvas />
-      </div>
-    </DrawingProvider>
-  );
-};
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
-export default App;
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
