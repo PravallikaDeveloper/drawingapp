@@ -1,31 +1,40 @@
-export type ShapeType = 'rectangle' | 'circle' | 'line';
+export type ShapeType = 'rectangle' | 'circle' | 'line' | 'freehand';
 
-export interface ShapeBase {
+export interface BaseShape {
   id: string;
   type: ShapeType;
-  x: number;
-  y: number;
-  strokeColor: string;
-  strokeWidth: number;
-  strokeStyle: 'solid' | 'dashed';
-  fillColor?: string;
+  strokeStyle: string;
+  fillStyle: string;
+  lineWidth: number;
+  lineDash: number[];
 }
 
-export interface Rectangle extends ShapeBase {
+export interface Rectangle extends BaseShape {
   type: 'rectangle';
+  x: number;
+  y: number;
   width: number;
   height: number;
 }
 
-export interface Circle extends ShapeBase {
+export interface Circle extends BaseShape {
   type: 'circle';
+  x: number;
+  y: number;
   radius: number;
 }
 
-export interface Line extends ShapeBase {
+export interface Line extends BaseShape {
   type: 'line';
+  x1: number;
+  y1: number;
   x2: number;
   y2: number;
 }
 
-export type Shape = Rectangle | Circle | Line;
+export interface Freehand extends BaseShape {
+  type: 'freehand';
+  points: { x: number; y: number }[];
+}
+
+export type Shape = Rectangle | Circle | Line | Freehand;
